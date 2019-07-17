@@ -1,0 +1,44 @@
+<block wx:if="{{loading === true && audioAction.method == 'play'}}">
+  <loading>歌曲加载中</loading>
+</block>
+<!-- 音乐播放组件-->
+<audio src="{{src}}" name="{{name}}" action="{{audioAction}}" bindplay="started" bindended="ended"  controls></audio>
+<!-- 内容列表 -->
+<scroll-view class="song-list">
+<view class="song" >
+<view class="song-item" wx:for="{{displayList}}" wx:key='key' wx:for-item="song" wx:for-index="index">
+    <view class=" current" bindtap="playItem" data-src="{{song.video_url}}" data-songname="{{song.title}}">
+      <image class="song-no" src="{{song.small_thumb}}" >{{displayList.length - index }}</image>
+      <view class="song-name">{{song.title}}</view>
+    </view>
+  </view>
+</view>
+</scroll-view>
+<!--搜索-->
+<view class="cu-bar bg-white search fixed">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm='inputEnter' bindinput='input'></input>
+  </view>
+  <view class="action">
+    <button bindtap='inputEnter' class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+  </view>
+</view>
+<!--导航条--> 
+<view class="navbar"> 
+  <text wx:for="{{navbar}}" data-idx="{{index}}" data-id="{{item.id}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.title}}</text> 
+</view>
+<!-- navbar的内容 -->
+<view hidden="{{hiddenname}}" class='navvalue'>
+  <view class="neirong" wx:for='{{navvalue}}' data-id="{{item.id}}" data-title='{{item.title}}' bindtap='navbarItem' wx:key="unique">
+    {{item.title}}
+  </view>
+</view>
+<!-- 底部 -->
+<view class="footer">
+  <view class="footer-song">{{name}}</view>
+  <view class="controls">
+    <image class="btn btn-play" bindtap="play_pause" src="../../images/{{status}}.png">{{status}}</image>
+  </view>
+</view>
+
