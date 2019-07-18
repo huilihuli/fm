@@ -197,12 +197,11 @@ Page({
   },
   //回车和搜索按钮
   inputEnter:function(e){
-    console.log(this.data.inputValue);//搜索的名字
-    var url = furl + 'channel/' + regions[i].id;
+    var that = this;
+    var url = furl + 'channel/?title=' + that.data.inputValue;
     wechat.api(url).then((res, reg) => {
-      displayList = res.data.data;
       that.setData({
-        displayList: displayList,
+        displayList: res.data.data,
       });
     });
   },
