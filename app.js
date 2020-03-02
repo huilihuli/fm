@@ -7,6 +7,6 @@ App({
     
   },
   globalData:{
-    url:'https://fm.huilihuli.club/'
+    url:'https://fm.huilihuli.xyz/'
   }
 })

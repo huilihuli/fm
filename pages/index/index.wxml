@@ -1,13 +1,8 @@
-<block wx:if="{{loading === true && audioAction.method == 'play'}}">
-  <loading>歌曲加载中</loading>
-</block>
-<!-- 音乐播放组件-->
-<audio src="{{src}}" name="{{name}}" action="{{audioAction}}" bindplay="started" bindended="ended"  controls></audio>
 <!-- 内容列表 -->
 <scroll-view class="song-list">
 <view class="song" >
 <view class="song-item" wx:for="{{displayList}}" wx:key='key' wx:for-item="song" wx:for-index="index">
-    <view class=" current" bindtap="playItem" data-src="{{song.video_url}}" data-songname="{{song.title}}">
+    <view class=" current" bindtap="playItem" data-src="{{song.video_url}}" data-songname="{{song.title}}" data-img="{{song.small_thumb}}">
       <image class="song-no" src="{{song.small_thumb}}" >{{displayList.length - index }}</image>
       <view class="song-name">{{song.title}}</view>
     </view>
