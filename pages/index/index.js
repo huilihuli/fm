@@ -108,11 +108,7 @@ Page({
   
   //初始化函数
   onLoad: function () {
-    // this.getLocation();
-    backaudio.title = '此时此刻'
-    backaudio.epname = '此时此刻'
-    backaudio.singer = '许巍'
-    backaudio.src = 'http://rtmpcnr003.cnr.cn/live/yyzs/playlist.m3u8';
+    this.getLocation();
   },
   //播放内容用
   music: function(){
